@@ -1,16 +1,13 @@
-# cero_to_pro_bloc
+# Bloc para principiantes
 
-A new Flutter project.
+![Miniatura de YouTube](https://github.com/heygonzalocaira/cero_to_pro_bloc/assets/21184592/1d2621a8-364c-4ff0-a811-aca50a8c0f8f)
 
-## Getting Started
+Youtube video : [https://youtube.com/playlist?list=PLPGKYPDwSnf3MrTGlfnke26ayATDUB7fl&si=iTgw08BZKrgIKOis](https://youtube.com/playlist?list=PLPGKYPDwSnf3MrTGlfnke26ayATDUB7fl&si=iTgw08BZKrgIKOis)
 
-This project is a starting point for a Flutter application.
+## Instalación
 
-A few resources to get you started if this is your first Flutter project:
+Para ejecutar este proyecto por su cuenta, haga lo siguiente:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone este proyecto.
+2. Ejecute `flutter pub get`.
+3. Ejecute el proyecto usando `flutter run` o usando las herramientas de su IDE.
