@@ -1,3 +1,4 @@
+import 'package:cero_to_pro_bloc/domain/repository/poke_repository.dart';
 import 'package:cero_to_pro_bloc/presentation/home/cubit/counter_cubit.dart';
 import 'package:cero_to_pro_bloc/presentation/home/cubit/counter_state.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,9 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CounterCubit()..getFakeData(),
+      create: (context) => CounterCubit(
+        pokeRepository: context.read<PokeRepository>(),
+      )..getFakeData(),
       child: const MyHomeView(),
     );
   }
@@ -40,9 +43,16 @@ class MyHomeView extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             case CounterStatus.success:
               return Center(
-                child: Text(
-                  '${counterCubit.state.counter}',
-                  style: Theme.of(context).textTheme.headlineMedium,
+                child: Column(
+                  children: [
+                    Text(
+                      'Pokemon Ditto',
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    ...state.pokemon!.abilities
+                        .map((ability) => Text(ability.ability.name))
+                        .toList()
+                  ],
                 ),
               );
             case CounterStatus.error:
