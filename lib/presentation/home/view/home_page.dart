@@ -3,25 +3,35 @@ import 'package:cero_to_pro_bloc/presentation/home/cubit/counter_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => CounterCubit()..getFakeData(),
+      child: const MyHomeView(),
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomeView extends StatelessWidget {
+  const MyHomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     final counterCubit = context.read<CounterCubit>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text("Bloc/Cubit "),
       ),
-      body: BlocBuilder<CounterCubit, CounterState>(
+      body: BlocConsumer<CounterCubit, CounterState>(
+        listener: (context, state) {
+          if (state.status == CounterStatus.success) {
+            print("Success");
+          }
+        },
         builder: (context, state) {
           switch (state.status) {
             case CounterStatus.initial:
